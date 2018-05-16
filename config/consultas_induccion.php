@@ -1,6 +1,6 @@
 <?php
 
-//Clase para las transacciones del SIVISAE
+//Clase para las transacciones del SIE
 //Autor: Ing. Andres Camilo Mendez Aguirre
 //Fecha: 25/03/2015
 
@@ -107,18 +107,18 @@ class consultas_induccion extends Bd {
         return $periodo;
     }
 
-    function registrarInduccion($documento, $tipo_eval, $per_aca_est, $part) {
+    function registrarInduccion($documento, $tipo_eval, $per_aca_est) {
         //se inserta la induccion
-        $sql = "insert into induccion.induccion_estudiante (estudiante,fecha,tipo_induccion,periodo, participacion) values ($documento,CURRENT_TIMESTAMP,$tipo_eval,$per_aca_est, $part)";
+        $sql = "insert into induccion.induccion_estudiante (estudiante,fecha,tipo_induccion,periodo) values ($documento,CURRENT_TIMESTAMP,$tipo_eval,$per_aca_est)";
         mysql_query($sql);
         $id_induccion = mysql_insert_id();
 
         if ($id_induccion != 0) {
             // Se inserta en el sistema
-            $sql = "INSERT INTO SIVISAE.`induccion_estudiante` (`estudiante_id`,`fecha`,`tipo_induccion`,`periodo_academico_id`, participacion)
+            $sql = "INSERT INTO SIVISAE.`induccion_estudiante` (`estudiante_id`,`fecha`,`tipo_induccion`,`periodo_academico_id`)
                     SELECT 
-                    e.`estudiante_id`, ie.`fecha`, ie.`tipo_induccion`, pa.`periodo_academico_id`, ie.participacion
-                    FROM induccion.`induccion_estudiante` ie, `SIVISAE`.`estudiante` e, SIVISAE.periodo_academico pa 
+                    e.`estudiante_id`, ie.`fecha`, ie.`tipo_induccion`, pa.`periodo_academico_id`
+                    FROM induccion.`induccion_estudiante` ie, `SIE`.`estudiante` e, SIVISAE.periodo_academico pa 
                     WHERE ie.`estudiante`=e.`cedula`
                     AND pa.`codigo_peraca`=ie.`periodo`
                     AND id_induccion=$id_induccion";
@@ -142,11 +142,12 @@ class consultas_induccion extends Bd {
         return $resultado;
     }
 
-    function validarEstudianteEvaluacionRealizada($documento, $tipo, $participa_induccion) {
+    function validarEstudianteEvaluacionRealizada($documento, $tipo) {
         $sql = "SELECT COUNT(ie.`estudiante_id`) AS conteo
                 FROM SIVISAE.induccion_estudiante ie, SIVISAE.estudiante e
                 WHERE ie.`estudiante_id`=e.`estudiante_id`
-                AND e.`cedula`= '$documento' AND ie.`tipo_induccion`=$tipo and ie.participacion=$participa_induccion";
+                AND e.`cedula`= '$documento' AND ie.`tipo_induccion`=$tipo";
+
         $resultado = mysql_query($sql);
         $conteo = 0;
         while ($row = mysql_fetch_array($resultado)) {

@@ -6,7 +6,7 @@ $manteniemiento = 0;
 if ($manteniemiento == 1) {
     ?>
     <div align="center">
-        <img src="http://consejeria.unad.edu.co/sie/template/imagenes/generales/mantenimiento_induccion.jpg" width="70%" height="80%"/>
+        <img src="http://sivisae.unad.edu.co/sie/template/imagenes/generales/mantenimiento_induccion.jpg" width="70%" height="80%"/>
     </div>
     <div align="center">
         <p style="font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:21px;text-align:center;font-family:verdana, sans-serif;line-height:1;">
@@ -467,7 +467,7 @@ $consulta = new consultas_induccion();
                                                         confirmButtonText: "Aceptar"
                                                     },
                                                     function () {
-                                                         window.location="http://consejeria.unad.edu.co/induccion/induccion_evaluacion_virtual.php#no-back-button"
+                                                         window.location="http://sivisae.unad.edu.co/induccion/induccion_evaluacion_virtual.php#no-back-button"
                                                     });
                                                     });
                                                 </script>';
