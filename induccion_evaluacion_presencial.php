@@ -12,7 +12,7 @@ $manteniemiento = 0;
 if ($manteniemiento == 1) {
     ?>
     <div align="center">
-        <img src="http://consejeria.unad.edu.co/sivisae/template/imagenes/generales/mantenimiento_induccion.jpg" width="70%" height="80%"/>
+        <img src="https://sivisae.unad.edu.co/sivisae/template/imagenes/generales/mantenimiento_induccion.jpg" width="70%" height="80%"/>
     </div>
     <div align="center">
         <p style="font-weight:normal;color:#000000;letter-spacing:1pt;word-spacing:2pt;font-size:21px;text-align:center;font-family:verdana, sans-serif;line-height:1;">
@@ -189,7 +189,7 @@ $consulta = new consultas_induccion();
 
     <body onload="nobackbutton();">
         <!--Encabezado - Inicio-->
-        <?php include "./template/sie_head_home.php"; ?>
+        <?php include "./template/sivisae_head_home.php"; ?>
         <!--Encabezado - Fin-->
 
 
@@ -197,8 +197,9 @@ $consulta = new consultas_induccion();
         <main>
             <!--aqui contenido incio-->
             <div >
+                <br><hr>
                 <div align="center">
-                    <h2 id='p_fieldset_autenticacion'>
+                    <h2 id='p_fieldset_autenticacion_2' style="background-color: #004669">
                         ENCUESTA DE SATISFACCIÓN INDUCCIÓN PRESENCIAL
                     </h2>
                 </div>
@@ -463,7 +464,7 @@ $consulta = new consultas_induccion();
                                                         confirmButtonText: "Aceptar"
                                                     },
                                                     function () {
-                                                         window.location="http://consejeria.unad.edu.co/induccion/induccion_evaluacion_presencial.php#no-back-button"
+                                                         window.location="https://sivisae.unad.edu.co/induccion/induccion_evaluacion_presencial.php#no-back-button"
                                                     });
                                                     });
                                                 </script>';
@@ -485,7 +486,7 @@ $consulta = new consultas_induccion();
 
         <?php
         //Pie de pagina
-        include "./template/sie_footer_home.php";
+        include "./template/sivisae_footer_home.php";
         ?>
     </body>
   <?php

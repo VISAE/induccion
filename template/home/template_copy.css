@@ -101,7 +101,7 @@ a.necesitaAyuda{
 	right: -210px;
 	text-decoration: none;
 	transition:.3s;
-	top: 5%;
+	top: 44%;
 	width: 260px;
 	z-index: 998;
 }
@@ -113,7 +113,7 @@ a.necesitaAyuda img{
 }
 a.necesitaAyuda span{
 	display: inline-block;
-	font-size: 1em;
+	font-size: 1.5em;
 	font-weight: bold;
 	padding-top: 8px;
 	padding-left: 10px;
@@ -289,14 +289,14 @@ nav ul li.principal ul li a:hover{
 	margin: 0px;
 	padding: 0px;
 	width:100%;
-	background:#000000;
+	background:#666;
         float: left;
 }
 .footerUNAD{
 	margin-left:auto;
 	margin-right:auto;
 	max-width:1024px;
-	background:#000000;
+	background:#666;
 	padding-bottom: 15px;
 }
 .footerUNADList1,.footerUNADList2,.footerUNADList3,.footerUNADIMG{
@@ -311,15 +311,15 @@ nav ul li.principal ul li a:hover{
 	margin-top: 0px;
 }
 .footerUNADList1{
-	width:23.30%;
+	width:25.30%;
 	padding-left: 1.45%;
 }
 .footerUNADList2{
-	width:20.4%;
+	width:24.4%;
 	padding-left: 4.85%;
 }
 .footerUNADList3{
-	width:18.15%;
+	width:19.15%;
 	padding-left: 4.85%;
 }
 .footerUNADListUL a{
@@ -340,7 +340,7 @@ nav ul li.principal ul li a:hover{
 	list-style:none;
 	width: 15%;
 	padding-left: 4%;
-	border-right: 1px solid #000000;
+	border-right: 1px solid #666;
 }
 .footerUNADRedes{
 	width:30px;
@@ -654,70 +654,4 @@ div.headerMobile figure{
 nav{
 	width: 240px;
 }
-}
-
-a.notificaciones{
-	background: #004669; /*e7b200   e26c0e*/
-	color: #FFF;
-	display: block;
-	padding: 10px;
-	position: fixed;
-	right: -210px;
-	text-decoration: none;
-	transition:.3s;
-	top: 11.5%;
-	width: 260px;
-	z-index: 998;
-}
-a.notificaciones:hover{
-	right: 0;
-}
-a.notificaciones img{
-	width: 50px;
-}
-a.notificaciones span{
-	display: inline-block;
-	font-size: 1.5em;
-	font-weight: bold;
-	padding-top: 8px;
-	padding-left: 10px;
-	position: absolute;
-}
-
-
-a.calendario{
-	background: #E26C0E; /*e7b200   e26c0e*/
-	color: #FFF;
-	display: block;
-	padding: 10px;
-	position: fixed;
-	right: -315px;
-	text-decoration: none;
-	transition:.3s;
-	top: 18.5%;
-	width: 365px;
-	z-index: 998;
-        height: 48px;
-}
-a.calendario:hover{
-	right: 0;
-}
-a.calendario img{
-	width: 50px;
-}
-a.calendario span{
-	display: inline-block;
-	font-size: 1.5em;
-	font-weight: bold;
-	padding-top: 8px;
-	padding-left: 10px;
-	position: absolute;
-}
-
-.last_not { 
-   
-   color: #fff;
-/* webkit-border y moz-border son estilo adicionales para hacerlo compatible con la mayoria de los nevegadores */
-   background:#e7b200; 
-   
 }
