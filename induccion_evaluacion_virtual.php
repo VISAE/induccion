@@ -399,16 +399,16 @@ $consulta = new consultas_induccion();
                                 $documento = $_POST["identificacion_estudiante"];
                                 $sugerencias = $_POST["sugerencias"];
                                 $observacion = $_POST["observacion"];
-                                
+                                $participa_induccion = $_POST["participa_induccion"];
                                 $perEst = $consulta->validarEstudianteEvaluacion($documento);
                                 if ($perEst != 0) {
 
                                     // Se valida que el estudiante no haya diligenciado la induccion
-                                    $conteoInd = $consulta->validarEstudianteEvaluacionRealizada($documento, 2, 1);
+                                    $conteoInd = $consulta->validarEstudianteEvaluacionRealizada($documento, 2, 0, $perEst);
 
-                                    if ($conteoInd <= 0) {
+                                    if ($row = mysql_fetch_array($conteoInd)) {
                                         //Se guarda la induccion
-                                        $idInduccion = $consulta->registrarInduccion($documento, 2, $perEst, 1);
+                                        $idInduccion = $consulta->registrarInduccion($documento, $row['estudiante_id'],2, $perEst, $participa_induccion);
                                         // Se guardan las respuestas
                                         $preguntas = $_POST["preguntas"];
 

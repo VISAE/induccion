@@ -1,6 +1,6 @@
 <?php
 
-//Clase para las transacciones del SIE
+//Clase para las transacciones del SIVISAE
 //Autor: Ing. Andres Camilo Mendez Aguirre
 //Fecha: 25/03/2015
 
@@ -96,8 +96,12 @@ class consultas_induccion extends Bd {
     }
 
     function validarEstudianteEvaluacion($documento) {
-        $sql = "SELECT pa.`codigo_peraca` FROM SIVISAE.`matricula` m, SIVISAE.`estudiante` e, SIVISAE.`periodo_academico` pa "
-                . "WHERE m.`estudiante_estudiante_id`=e.`estudiante_id` AND e.`cedula`=$documento AND pa.`periodo_academico_id`=m.`periodo_academico_periodo_academico_id` ORDER BY pa.`codigo_peraca` DESC LIMIT 1";
+        $sql = "SELECT pa.`periodo_academico_id` 
+                FROM SIVISAE.`matricula` m, SIVISAE.`estudiante` e, SIVISAE.`periodo_academico` pa 
+                WHERE m.`estudiante_estudiante_id`=e.`estudiante_id` 
+                AND e.`cedula`=$documento 
+                AND pa.`periodo_academico_id`=m.`periodo_academico_periodo_academico_id` 
+                ORDER BY pa.`periodo_academico_id` DESC LIMIT 1";
 
         $resultado = mysql_query($sql);
         $periodo = 0;
@@ -107,25 +111,28 @@ class consultas_induccion extends Bd {
         return $periodo;
     }
 
-    function registrarInduccion($documento, $tipo_eval, $per_aca_est) {
+    function registrarInduccion($documento, $estudiante_id, $tipo_eval, $periodo_id, $part) {
         //se inserta la induccion
-        $sql = "insert into induccion.induccion_estudiante (estudiante,fecha,tipo_induccion,periodo) values ($documento,CURRENT_TIMESTAMP,$tipo_eval,$per_aca_est)";
+        $sql = "INSERT INTO induccion.induccion_estudiante (estudiante,fecha,tipo_induccion,periodo, participacion) 
+                VALUES ($documento,CURRENT_TIMESTAMP,$tipo_eval,$periodo_id,$part)";
         mysql_query($sql);
-        $id_induccion = mysql_insert_id();
+        $id_eval_induccion = mysql_insert_id();
 
-        if ($id_induccion != 0) {
+        if ($id_eval_induccion != 0) {
             // Se inserta en el sistema
-            $sql = "INSERT INTO SIVISAE.`induccion_estudiante` (`estudiante_id`,`fecha`,`tipo_induccion`,`periodo_academico_id`)
+            /*$sql = "INSERT INTO SIVISAE.`induccion_estudiante` (`estudiante_id`,`fecha`,`tipo_induccion`,`periodo_academico_id`, participacion)
                     SELECT 
-                    e.`estudiante_id`, ie.`fecha`, ie.`tipo_induccion`, pa.`periodo_academico_id`
-                    FROM induccion.`induccion_estudiante` ie, `SIE`.`estudiante` e, SIVISAE.periodo_academico pa 
+                    e.`estudiante_id`, ie.`fecha`, ie.`tipo_induccion`, pa.`periodo_academico_id`, ie.participacion
+                    FROM induccion.`induccion_estudiante` ie, `SIVISAE`.`estudiante` e, SIVISAE.periodo_academico pa 
                     WHERE ie.`estudiante`=e.`cedula`
                     AND pa.`codigo_peraca`=ie.`periodo`
-                    AND id_induccion=$id_induccion";
+                    AND id_induccion=$id_induccion";*/
+            $sql = "UPDATE SIVISAE.`induccion_estudiante` SET `participacion`=$part 
+                    WHERE `estudiante_id`=$estudiante_id AND `periodo_academico_id`=$periodo_id AND `tipo_induccion`=$tipo_eval";
         }
         mysql_query($sql);
 
-        return $id_induccion;
+        return $id_eval_induccion;
     }
 
     function registrarEvaluacionInduccion($documento, $id_respuesta, $observacion, $sugerencias, $id_induccion, $t_ind) {
@@ -142,18 +149,19 @@ class consultas_induccion extends Bd {
         return $resultado;
     }
 
-    function validarEstudianteEvaluacionRealizada($documento, $tipo) {
-        $sql = "SELECT COUNT(ie.`estudiante_id`) AS conteo
+    function validarEstudianteEvaluacionRealizada($documento, $tipo, $participa_induccion, $per_aca_est) {
+        $sql = "SELECT ie.`estudiante_id`
                 FROM SIVISAE.induccion_estudiante ie, SIVISAE.estudiante e
                 WHERE ie.`estudiante_id`=e.`estudiante_id`
-                AND e.`cedula`= '$documento' AND ie.`tipo_induccion`=$tipo";
-
+                AND e.`cedula`= '$documento' AND ie.`tipo_induccion`=$tipo 
+                AND ie.participacion=$participa_induccion 
+                AND ie.`periodo_academico_id`=$per_aca_est ";
         $resultado = mysql_query($sql);
-        $conteo = 0;
+        /*$conteo = 0;
         while ($row = mysql_fetch_array($resultado)) {
             $conteo = $row[0];
-        }
-        return $conteo;
+        }*/
+        return $resultado;
     }
 	
 	// Metodos Momentos induccion
