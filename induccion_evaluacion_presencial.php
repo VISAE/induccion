@@ -441,8 +441,8 @@ $consulta = new consultas_induccion();
                                         echo '<script type="text/javascript" language="javascript">
                                                 $(document).ready(function () {
                                                             swal({
-                                                        title: "¡Su Inducción YA fue Registrada!",
-                                                        text: "Estimado estudiante usted ya registró la evaluación a su inducción presencial.",
+                                                        title: "¡Su Evaluación NO fue Registrada!",
+                                                        text: "Estimado estudiante verifique con su consejero que su asistencia a la inducción presencial haya sido registrada.",
                                                         type: "error",
                                                         confirmButtonColor: "#004669",
                                                         confirmButtonText: "Aceptar"
@@ -464,7 +464,7 @@ $consulta = new consultas_induccion();
                                                         confirmButtonText: "Aceptar"
                                                     },
                                                     function () {
-                                                         window.location="https://sivisae.unad.edu.co/induccion/induccion_evaluacion_presencial.php#no-back-button"
+                                                         window.location="https://www.unad.edu.co/"
                                                     });
                                                     });
                                                 </script>';
