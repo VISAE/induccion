@@ -90,7 +90,7 @@ $consulta = new consultas_induccion();
                 var contador = 0;
                 var observaciones = 0;
                 
-                for (var i = 82; i <= preguntas + 10; i++) {
+                for (var i = 101; i <= preguntas + 12; i++) {
                     var ok = 0;
                     for (var j = 0; j < document.getElementsByName("respuesta" + i).length; j++) {
                         if (document.getElementsByName("respuesta" + i)[j].checked) {
@@ -162,7 +162,7 @@ $consulta = new consultas_induccion();
 
 
             function validar(preguntas) {
-                for (var i = 92; i <= preguntas + 9; i++) {
+                for (var i = 113; i <= preguntas + 11; i++) {
                     txtObservacion = document.getElementById("observacion" + id);
                     if (txtObservacion.style.display == 'block' && txtObservacion.value == "") {
                         alert("debe indicar el por qué para las respuestas en desacuerdo");
@@ -263,11 +263,11 @@ $consulta = new consultas_induccion();
 
                                         </tr>
                                         <?php
-                                        $index = 81;
+                                        $index = 100;
                                         foreach ($xml->pregunta as $pregunta) {
                                             $id_pregunta = $pregunta->id;
                                             $index++;
-                                            if ($index == 82) {
+                                            if ($index == 101) {
                                                 ?>
                                                 <tr>
                                                     <th colspan="5">
@@ -281,7 +281,7 @@ $consulta = new consultas_induccion();
                                                     </th>
                                                 </tr>
                                                 <?php
-                                            } else if ($index == 88) {
+                                            } else if ($index == 107) {
                                                 ?>
                                                 <tr>
                                                     <th colspan="5">
@@ -326,8 +326,8 @@ $consulta = new consultas_induccion();
                                             }*/
 
 
-                                            if ($index <= 91) {
-                                                if ($index >= 82) {
+                                            if ($index <= 112) {
+                                                if ($index >= 101) {
                                                     $colspan = 5;
                                                     $mostrar = 0;
                                                 } else {
@@ -337,7 +337,7 @@ $consulta = new consultas_induccion();
                                                 ?>
                                                 <tr>
                                                     <td colspan="<?php echo $colspan; ?>">
-                                                        <?php echo $index - 81 . '. ' . $pregunta->descripcion; ?>
+                                                        <?php echo $index - 100 . '. ' . $pregunta->descripcion; ?>
                                                     </td> 
                                                     <?php
                                                     $data = $consulta->darRespuestasEvaluacionInduccion($id_pregunta);
@@ -376,7 +376,7 @@ $consulta = new consultas_induccion();
                                     <input name="preguntas" id="preguntas" type="hidden" value="<?php echo $index; ?>"></input>
                                     <input name="accion" id="accion" type="hidden" value="registrar"></input>
                                     <br>
-                                    <input name="registrar" id="registrar" type="button" value="Registrar Asistencia Presencial" class="art-button" onclick="validateRadioButtonList(<?php echo $index - 10; ?>)"></input>
+                                    <input name="registrar" id="registrar" type="button" value="Registrar Asistencia Presencial" class="art-button" onclick="validateRadioButtonList(<?php echo $index - 12; ?>)"></input>
                                 </form>
                             </div>
 

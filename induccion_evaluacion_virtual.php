@@ -83,7 +83,7 @@ $consulta = new consultas_induccion();
             function validateRadioButtonList(preguntas) {
                 var contador = 0;
                 var observaciones = 0;
-                for (var i = 92; i <= preguntas + 9; i++) {
+                for (var i = 113; i <= preguntas + 11; i++) {
                     var ok = 0;
                     for (var j = 0; j < document.getElementsByName("respuesta" + i).length; j++) {
                         if (document.getElementsByName("respuesta" + i)[j].checked) {
@@ -146,7 +146,7 @@ $consulta = new consultas_induccion();
 
 
             function validar(preguntas) {
-                for (var i = 92; i <= preguntas + 8; i++) {
+                for (var i = 113; i <= preguntas + 10; i++) {
                     txtObservacion = document.getElementById("observacion" + id);
                     if (txtObservacion.style.display == 'block' && txtObservacion.value == "") {
                         alert("debe indicar el por qué para las respuestas en desacuerdo");
@@ -242,11 +242,11 @@ $consulta = new consultas_induccion();
                                             </th>
                                                                                       
                                        <?php
-                                        $index = 91;
+                                        $index = 112;
                                         foreach ($xml->pregunta as $pregunta) {
                                             $id_pregunta = $pregunta->id;
                                             $index++;
-                                            if ($index == 92) {
+                                            if ($index == 113) {
                                                 ?>
                                                 <tr>
                                                     <th colspan="3">
@@ -272,7 +272,7 @@ $consulta = new consultas_induccion();
                                                 <?php
                                                 
                                             }                                  
-                                            else if ($index == 93) {
+                                            else if ($index == 114) {
                                                 ?>
                                                 <tr>
                                                     <th colspan="7">
@@ -287,7 +287,7 @@ $consulta = new consultas_induccion();
                                                  </tr>
                                                 <?php
                                             
-                                            }else if ($index == 96) {
+                                            }else if ($index == 117) {
                                                 ?>
                                                 <tr>
                                                     <th colspan="7">
@@ -336,8 +336,8 @@ $consulta = new consultas_induccion();
                                             }*/
 
 
-                                            if ($index <= 100) {
-                                                if ($index >= 93) {
+                                            if ($index <= 123) {
+                                                if ($index >= 114) {
                                                     $colspan = 7;
                                                     $mostrar = 0;
                                                 } else {
@@ -347,7 +347,7 @@ $consulta = new consultas_induccion();
                                                 ?>
                                                 <tr>
                                                     <td colspan="<?php echo $colspan; ?>">
-                                                        <?php echo $index - 91 . '. ' . $pregunta->descripcion; ?>
+                                                        <?php echo $index - 112 . '. ' . $pregunta->descripcion; ?>
                                                     </td> 
                                                     <?php
                                                     $data = $consulta->darRespuestasEvaluacionInduccion($id_pregunta);
@@ -386,7 +386,7 @@ $consulta = new consultas_induccion();
                                     <input name="preguntas" id="preguntas" type="hidden" value="<?php echo $index; ?>"></input>
                                     <input name="accion" id="accion" type="hidden" value="registrar"></input>
                                     <br>
-                                    <input name="registrar" id="registrar" type="button" value="Registrar Asistencia Virtual" class="art-button" onclick="validateRadioButtonList(<?php echo $index - 9; ?>)"></input>
+                                    <input name="registrar" id="registrar" type="button" value="Registrar Asistencia Virtual" class="art-button" onclick="validateRadioButtonList(<?php echo $index - 11; ?>)"></input>
                                 </form>
                             </div>
 
@@ -413,7 +413,7 @@ $consulta = new consultas_induccion();
                                         $preguntas = $_POST["preguntas"];
 
                                         $resultado = 0;
-                                        for ($i = 92; $i <= $preguntas; $i++) {
+                                        for ($i = 113; $i <= $preguntas; $i++) {
                                             $nombre_elemento = "respuesta" . $i;
 
                                             /*if ($i <= 100) {
